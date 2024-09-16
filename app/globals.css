@@ -95,7 +95,7 @@ body {
   0% {
     opacity: 0;
   }
-  50% {
+  35% {
     opacity: 0.0;
   }
   100% {
@@ -104,5 +104,21 @@ body {
 }
 
 .fadeInAnimation {
-  animation: fadeIn 4s ease-in-out forwards;
+  animation: fadeIn 3s ease-in-out forwards;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 1.5s infinite;
 }
