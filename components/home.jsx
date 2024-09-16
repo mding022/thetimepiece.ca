@@ -99,7 +99,7 @@ export default function ModernWatchLanding() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
-                className="inline-block"
+                className="inline-block text-gray-600"
               >
                 Affordable,
               </motion.span>
