@@ -47,12 +47,12 @@ export default function ModernWatchLanding() {
         <div className="flex items-center justify-center space-x-6">
           <h1 className="text-lg text-center font-serif flex-grow">
             <motion.span
-              initial={{ opacity: 0, paddingRight: '3rem' }} // Initial state
-              animate={{ opacity: 1, paddingRight: '4.5rem' }} // End state
-              transition={{ duration: 0.5, delay: 1.3 }} // Animation duration and delay
-              className="text-base font-sans font-semibold text-zinc-400 hover:underline underline-offset-4"
+              initial={{ opacity: 0, paddingRight: '1rem' }} // Initial state
+              animate={{ opacity: 1, paddingRight: '1.5rem' }} // End state
+              transition={{ duration: 0.5, delay: 3 }} // Animation duration and delay
+              className="text-base sm:text-sm font-sans font-semibold text-zinc-400 hover:underline underline-offset-4"
             >
-              <a href="#">About Us</a>
+              <a href="#">Our Stock</a>
             </motion.span>
 
             <span className="text-lg">the</span>
@@ -60,13 +60,14 @@ export default function ModernWatchLanding() {
             <span className="text-base text-stone-400">.ca</span>
 
             <motion.span
-              initial={{ opacity: 0, paddingLeft: '3rem' }} // Initial state
-              animate={{ opacity: 1, paddingLeft: '4.5rem' }} // End state
-              transition={{ duration: 0.5, delay: 1.7 }} // Animation duration and delay
-              className="text-base font-sans font-semibold text-zinc-400 hover:underline underline-offset-4"
+              initial={{ opacity: 0, paddingLeft: '1rem' }} // Initial state for small screens
+              animate={{ opacity: 1, paddingLeft: '1.5rem' }} // End state for small screens
+              transition={{ duration: 0.5, delay: 3.4 }} // Animation duration and delay
+              className="text-base sm:text-sm font-sans font-semibold text-zinc-400 hover:underline underline-offset-4 sm:pl-[3rem] sm:animate-pl-[4.5rem]"
             >
               <a href="#">About Us</a>
             </motion.span>
+
           </h1>
         </div>
       </header>
@@ -97,7 +98,7 @@ export default function ModernWatchLanding() {
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ delay: 0.8, duration: 0.8 }}
                 className="inline-block"
               >
                 Affordable,
@@ -105,7 +106,7 @@ export default function ModernWatchLanding() {
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
+                transition={{ delay: 1.3, duration: 0.8 }}
                 className="inline-block"
               >
                 &nbsp;Luxurious.
@@ -114,7 +115,7 @@ export default function ModernWatchLanding() {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
+              transition={{ delay: 2, duration: 0.8 }}
               className="text-xl font-semibold mb-8 text-stone-200"
             >
               Discover our collection of premium quality modded watches.
@@ -122,14 +123,14 @@ export default function ModernWatchLanding() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1.5, duration: 0.8 }}
+              transition={{ delay: 2.3, duration: 0.8 }}
             >
               <Button
                 asChild
                 size="lg"
                 className="bg-white text-gray-900 hover:bg-gray-200 text-lg font-bold"
               >
-                <Link href="/shop">BROWSE OUR SHOP</Link>
+                <Link href="/shop">Browse our Catalogue</Link>
               </Button>
             </motion.div>
           </div>
