@@ -33,12 +33,13 @@ export default function ModernWatchLanding() {
           <video
             autoPlay
             muted
+            loop
             playsInline
-            className="absolute w-full h-full object-cover filter grayscale opacity-40 brightness-50"
+            className="absolute w-full h-full object-cover filter grayscale brightness-50 fadeInAnimation"
             aria-hidden="true"
           >
             <source
-              src="https://cdn.pixabay.com/video/2020/04/23/37006-413208203_large.mp4"
+              src="https://cdn.pixabay.com/video/2024/03/18/204582-925146042_large.mp4"
               type="video/mp4"
             />
             Your browser does not support the video tag.

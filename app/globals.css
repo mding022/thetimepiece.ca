@@ -90,3 +90,19 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.0;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.fadeInAnimation {
+  animation: fadeIn 4s ease-in-out forwards;
+}
