@@ -130,7 +130,7 @@ export default function ModernWatchLanding() {
                 size="lg"
                 className="bg-white text-gray-900 hover:bg-gray-200 text-lg font-bold"
               >
-                <Link href="/shop">Browse our Catalogue</Link>
+                <Link href="https://shop.thetimepiece.ca">Browse our Catalogue</Link>
               </Button>
             </motion.div>
           </div>
