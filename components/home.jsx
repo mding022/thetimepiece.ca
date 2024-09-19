@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import EmblaCarousel from "@/components/EmblaCarousel";
 import {
   Clock,
   ShieldCheck,
@@ -17,29 +18,52 @@ import { useState, useEffect } from 'react';
 
 export default function ModernWatchLanding() {
   const { ref, inView } = useInView({
-    triggerOnce: true, // Animates only the first time it's in view
-    threshold: 0.1, // Start animation when 10% of the element is visible
+    triggerOnce: true,
+    threshold: 0.1,
   });
 
-  const [isScrolling, setIsScrolling] = useState(false);
-  const [showArrow, setShowArrow] = useState(false);
+  const [secondTitle, setSecondTitle] = useState(false);
 
-  // Handle scroll event to trigger fade-out
   useEffect(() => {
-    const handleScroll = () => setIsScrolling(true);
+    if (inView) {
+      const timer = setTimeout(() => {
+        setSecondTitle(true);
+      }, 300);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+      return () => clearTimeout(timer);
+    }
+  }, [inView]);
+
+  const [showArrow, setShowArrow] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowArrow(true);
-    }, 1500); // 2-second delay
+    }, 1500);
 
-    // Clean up the timer on component unmount
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    const handleScroll = (event) => {
+      if (event.deltaY > 0) {
+        event.preventDefault();
+        window.scrollBy({
+          top: window.innerHeight,
+          behavior: 'smooth',
+        });
+      }
+    };
+
+    window.addEventListener("wheel", handleScroll, { passive: false });
+
+    return () => window.removeEventListener("wheel", handleScroll);
+  }, []);
+
+  const headerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   return (
     <div className="flex flex-col min-h-screen w-full font-sans">
@@ -47,9 +71,9 @@ export default function ModernWatchLanding() {
         <div className="flex items-center justify-center space-x-6">
           <h1 className="text-lg text-center font-serif flex-grow">
             <motion.span
-              initial={{ opacity: 0, paddingRight: '1rem' }} // Initial state
-              animate={{ opacity: 1, paddingRight: '1.5rem' }} // End state
-              transition={{ duration: 0.5, delay: 3 }} // Animation duration and delay
+              initial={{ opacity: 0, paddingRight: '1rem' }}
+              animate={{ opacity: 1, paddingRight: '1.5rem' }}
+              transition={{ duration: 0.5, delay: 3 }}
               className="text-base sm:text-sm font-sans font-semibold text-zinc-400 hover:underline underline-offset-4"
             >
               <a href="#">Our Stock</a>
@@ -60,14 +84,13 @@ export default function ModernWatchLanding() {
             <span className="text-base text-stone-400">.ca</span>
 
             <motion.span
-              initial={{ opacity: 0, paddingLeft: '1rem' }} // Initial state for small screens
-              animate={{ opacity: 1, paddingLeft: '1.5rem' }} // End state for small screens
-              transition={{ duration: 0.5, delay: 3.4 }} // Animation duration and delay
+              initial={{ opacity: 0, paddingLeft: '1rem' }}
+              animate={{ opacity: 1, paddingLeft: '1.5rem' }}
+              transition={{ duration: 0.5, delay: 3.4 }}
               className="text-base sm:text-sm font-sans font-semibold text-zinc-400 hover:underline underline-offset-4 sm:pl-[3rem] sm:animate-pl-[4.5rem]"
             >
               <a href="#">About Us</a>
             </motion.span>
-
           </h1>
         </div>
       </header>
@@ -138,7 +161,7 @@ export default function ModernWatchLanding() {
 
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: isScrolling || !showArrow ? 0 : 0.4 }}
+          animate={{ opacity: !showArrow ? 0 : 0.4 }}
           transition={{ duration: 0.5 }}
           className="relative flex justify-center items-center"
         >
@@ -159,6 +182,19 @@ export default function ModernWatchLanding() {
         </motion.div>
 
         <section className="py-20 px-4 bg-transparent">
+          <div className="pb-9 flex flex-col items-center">
+            <motion.header
+              ref={ref}
+              className="text-5xl font-black tracking-bold sm:text-2xl md:text-3xl mb-5 text-center"
+              variants={headerVariants}
+              initial="hidden"
+              animate={secondTitle ? "visible" : "hidden"}
+              transition={{ duration: 0.5 }}
+            >
+              The Ultimate Collection.
+            </motion.header>
+            <EmblaCarousel slides={[0, 1, 2, 3, 4]} />
+          </div>
           <div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
             ref={ref}
@@ -201,7 +237,6 @@ export default function ModernWatchLanding() {
                 </h4>
                 <p className="text-zinc-100">{feature.description}</p>
               </motion.div>
-
             ))}
           </div>
         </section>
@@ -247,19 +282,13 @@ export default function ModernWatchLanding() {
                   <h4 className="text-xl font-semibold mb-2 text-zinc-100">
                     {step.title}
                   </h4>
-                  <p className="text-zinc-100">{step.description}</p>
+                  <p className="text-zinc-200">{step.description}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
       </main>
-
-      <footer className="py-6 bg-transparent text-white text-center">
-        <p className="text-sm">
-          © {new Date().getFullYear()} The Timepiece. All rights reserved.
-        </p>
-      </footer>
     </div>
   );
 }
