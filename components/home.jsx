@@ -155,7 +155,7 @@ export default function ModernWatchLanding() {
               variants={headerVariants}
               initial="hidden"
               animate={inView ? "visible" : "hidden"}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 1.1 }}
             >
               The Ultimate Collection.
             </motion.header>
