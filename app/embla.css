@@ -8,13 +8,13 @@
   
   @media (min-width: 640px) { /* Medium screens (md) */
     .embla {
-      max-width: 48rem;
+      max-width: 38rem;
     }
   }
   
   @media (min-width: 1024px) { /* Large screens (lg) */
     .embla {
-      max-width: 64rem;
+      max-width: 40rem;
     }
   }
   .embla__viewport {
