@@ -44,22 +44,6 @@ export default function ModernWatchLanding() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    const handleScroll = (event) => {
-      if (event.deltaY > 0) {
-        event.preventDefault();
-        window.scrollBy({
-          top: window.innerHeight,
-          behavior: 'smooth',
-        });
-      }
-    };
-
-    window.addEventListener("wheel", handleScroll, { passive: false });
-
-    return () => window.removeEventListener("wheel", handleScroll);
-  }, []);
-
   const headerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
