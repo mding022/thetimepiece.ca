@@ -22,13 +22,24 @@ export default function ModernWatchLanding() {
     threshold: 0.1,
   });
 
+  const [firstTitle, setFirstTitle] = useState(false);
   const [secondTitle, setSecondTitle] = useState(false);
 
   useEffect(() => {
     if (inView) {
       const timer = setTimeout(() => {
+        setFirstTitle(true);
+      }, 250);
+
+      return () => clearTimeout(timer);
+    }
+  }, [inView]);
+
+  useEffect(() => {
+    if (inView) {
+      const timer = setTimeout(() => {
         setSecondTitle(true);
-      }, 800);
+      }, 750);
 
       return () => clearTimeout(timer);
     }
@@ -154,7 +165,7 @@ export default function ModernWatchLanding() {
               className="text-6xl font-black tracking-bold sm:text-4xl md:text-5xl mb-5 text-center"
               variants={headerVariants}
               initial="hidden"
-              animate={inView ? "visible" : "hidden"}
+              animate={firstTitle ? "visible" : "hidden"}
               transition={{ duration: 1.1 }}
             >
               The Ultimate Collection.
