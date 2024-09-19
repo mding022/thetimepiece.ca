@@ -28,7 +28,7 @@ export default function ModernWatchLanding() {
     if (inView) {
       const timer = setTimeout(() => {
         setSecondTitle(true);
-      }, 300);
+      }, 800);
 
       return () => clearTimeout(timer);
     }
@@ -54,27 +54,9 @@ export default function ModernWatchLanding() {
       <header className="py-4 px-6 bg-background/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50">
         <div className="flex items-center justify-center space-x-6">
           <h1 className="text-lg text-center font-serif flex-grow">
-            <motion.span
-              initial={{ opacity: 0, paddingRight: '1rem' }}
-              animate={{ opacity: 1, paddingRight: '1.5rem' }}
-              transition={{ duration: 0.5, delay: 3 }}
-              className="text-base sm:text-sm font-sans font-semibold text-zinc-400 hover:underline underline-offset-4"
-            >
-              <a href="#">Our Stock</a>
-            </motion.span>
-
             <span className="text-lg">the</span>
             <span className="text-2xl">Timepiece</span>
             <span className="text-base text-stone-400">.ca</span>
-
-            <motion.span
-              initial={{ opacity: 0, paddingLeft: '1rem' }}
-              animate={{ opacity: 1, paddingLeft: '1.5rem' }}
-              transition={{ duration: 0.5, delay: 3.4 }}
-              className="text-base sm:text-sm font-sans font-semibold text-zinc-400 hover:underline underline-offset-4 sm:pl-[3rem] sm:animate-pl-[4.5rem]"
-            >
-              <a href="#">About Us</a>
-            </motion.span>
           </h1>
         </div>
       </header>
@@ -169,10 +151,10 @@ export default function ModernWatchLanding() {
           <div className="pb-9 flex flex-col items-center">
             <motion.header
               ref={ref}
-              className="text-5xl font-black tracking-bold sm:text-2xl md:text-3xl mb-5 text-center"
+              className="text-6xl font-black tracking-bold sm:text-4xl md:text-5xl mb-5 text-center"
               variants={headerVariants}
               initial="hidden"
-              animate={secondTitle ? "visible" : "hidden"}
+              animate={inView ? "visible" : "hidden"}
               transition={{ duration: 0.5 }}
             >
               The Ultimate Collection.
@@ -181,7 +163,6 @@ export default function ModernWatchLanding() {
           </div>
           <div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-            ref={ref}
           >
             {[
               {
@@ -212,7 +193,7 @@ export default function ModernWatchLanding() {
                 key={index}
                 className="flex flex-col items-center text-center p-6 bg-white bg-opacity-10 backdrop-filter backdrop-blur-md border-gray-400 border rounded-lg shadow-lg"
                 initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
+                animate={secondTitle ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.2, duration: 0.5 }}
               >
                 <feature.icon className="w-12 h-12 mb-4 text-zinc-50" />
