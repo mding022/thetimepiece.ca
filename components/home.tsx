@@ -251,14 +251,14 @@ export default function ModernWatchLanding() {
                   transition={{ delay: index * 0.2, duration: 0.5 }}
                   whileHover={{
                     scale: 1.03,
-                    boxShadow: "0 8px 16px rgba(0,0,0,0.1)",
+                    boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)",
                   }}
                 >
-                  <step.icon className="w-12 h-12 mb-4 text-white" />
-                  <h4 className="text-xl font-semibold mb-2 text-zinc-100">
+                  <step.icon className="w-12 h-12 mb-4 text-zinc-50" />
+                  <h4 className="text-xl font-semibold mb-2 text-zinc-50">
                     {step.title}
                   </h4>
-                  <p className="text-zinc-200">{step.description}</p>
+                  <p className="text-zinc-100">{step.description}</p>
                 </motion.div>
               ))}
             </div>
